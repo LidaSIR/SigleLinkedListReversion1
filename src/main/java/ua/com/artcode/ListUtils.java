@@ -1,5 +1,7 @@
 package ua.com.artcode;
 
+import static javafx.scene.input.KeyCode.T;
+
 public class ListUtils {
 
     public static A<String> createStringList() {
@@ -19,8 +21,19 @@ public class ListUtils {
         return head;
     }
 
-    public static<T> A<T> reversion(A<T> head) {
+    public static <T> A<T> reversion(A<T> head) {
 //        todo write your code
-        return head;
+        if (head == null || head.getNext() == null) return head;
+        A<T> current = head;
+        A<T> next = null;
+
+       while (head.getNext() != null){
+           next = head.getNext();
+           head.setNext(next.getNext());
+           next.setNext(current);
+           current = next;
+
+       }
+        return current;
     }
 }
